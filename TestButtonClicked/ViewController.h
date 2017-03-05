@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIControl+CS_FixMultiClick.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController{
+    int yyy;
+}
 
 
 @end
