@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1ECE52191E744B0800F9E17C /* hm_refresh1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ECE52181E744B0800F9E17C /* hm_refresh1@2x.png */; };
+		1ECE521C1E744F1400F9E17C /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ECE521B1E744F1400F9E17C /* Address.m */; };
 		1ED9EFA11E69ABCA002E4693 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ED9EFA01E69ABCA002E4693 /* main.m */; };
 		1ED9EFA41E69ABCA002E4693 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ED9EFA31E69ABCA002E4693 /* AppDelegate.m */; };
 		1ED9EFA71E69ABCA002E4693 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ED9EFA61E69ABCA002E4693 /* ViewController.m */; };
@@ -17,9 +19,13 @@
 		1ED9EFBB1E69ABE6002E4693 /* UIControl+CS_FixMultiClick.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ED9EFBA1E69ABE6002E4693 /* UIControl+CS_FixMultiClick.m */; };
 		1ED9EFBE1E6BE52B002E4693 /* NSDictionary+DeleteNull.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ED9EFBD1E6BE52B002E4693 /* NSDictionary+DeleteNull.m */; };
 		1ED9EFC11E6BE703002E4693 /* PersonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ED9EFC01E6BE703002E4693 /* PersonModel.m */; };
+		1ED9EFCB1E6D1ADA002E4693 /* CoreAnimationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ED9EFCA1E6D1ADA002E4693 /* CoreAnimationViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1ECE52181E744B0800F9E17C /* hm_refresh1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hm_refresh1@2x.png"; sourceTree = "<group>"; };
+		1ECE521A1E744F1400F9E17C /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
+		1ECE521B1E744F1400F9E17C /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
 		1ED9EF9C1E69ABCA002E4693 /* TestButtonClicked.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestButtonClicked.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1ED9EFA01E69ABCA002E4693 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1ED9EFA21E69ABCA002E4693 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -37,6 +43,8 @@
 		1ED9EFBD1E6BE52B002E4693 /* NSDictionary+DeleteNull.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+DeleteNull.m"; sourceTree = "<group>"; };
 		1ED9EFBF1E6BE703002E4693 /* PersonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonModel.h; sourceTree = "<group>"; };
 		1ED9EFC01E6BE703002E4693 /* PersonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonModel.m; sourceTree = "<group>"; };
+		1ED9EFC91E6D1ADA002E4693 /* CoreAnimationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreAnimationViewController.h; sourceTree = "<group>"; };
+		1ED9EFCA1E6D1ADA002E4693 /* CoreAnimationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreAnimationViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,8 +81,13 @@
 				1ED9EFA31E69ABCA002E4693 /* AppDelegate.m */,
 				1ED9EFA51E69ABCA002E4693 /* ViewController.h */,
 				1ED9EFA61E69ABCA002E4693 /* ViewController.m */,
+				1ECE521A1E744F1400F9E17C /* Address.h */,
+				1ECE521B1E744F1400F9E17C /* Address.m */,
+				1ED9EFC91E6D1ADA002E4693 /* CoreAnimationViewController.h */,
+				1ED9EFCA1E6D1ADA002E4693 /* CoreAnimationViewController.m */,
 				1ED9EFBF1E6BE703002E4693 /* PersonModel.h */,
 				1ED9EFC01E6BE703002E4693 /* PersonModel.m */,
+				1ECE52181E744B0800F9E17C /* hm_refresh1@2x.png */,
 				1ED9EFBC1E6BE52B002E4693 /* NSDictionary+DeleteNull.h */,
 				1ED9EFBD1E6BE52B002E4693 /* NSDictionary+DeleteNull.m */,
 				1ED9EFB91E69ABE6002E4693 /* UIControl+CS_FixMultiClick.h */,
@@ -158,6 +171,7 @@
 				1ED9EFB21E69ABCA002E4693 /* LaunchScreen.storyboard in Resources */,
 				1ED9EFAF1E69ABCA002E4693 /* Assets.xcassets in Resources */,
 				1ED9EFAA1E69ABCA002E4693 /* Main.storyboard in Resources */,
+				1ECE52191E744B0800F9E17C /* hm_refresh1@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +182,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1ECE521C1E744F1400F9E17C /* Address.m in Sources */,
+				1ED9EFCB1E6D1ADA002E4693 /* CoreAnimationViewController.m in Sources */,
 				1ED9EFBB1E69ABE6002E4693 /* UIControl+CS_FixMultiClick.m in Sources */,
 				1ED9EFA71E69ABCA002E4693 /* ViewController.m in Sources */,
 				1ED9EFAD1E69ABCA002E4693 /* TestButtonClicked.xcdatamodeld in Sources */,

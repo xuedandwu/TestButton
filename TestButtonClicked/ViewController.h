@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "UIControl+CS_FixMultiClick.h"
+#import "Address.h"
 
 @interface ViewController : UIViewController{
     int yyy;
+    
+    Address* add;
 }
 
 

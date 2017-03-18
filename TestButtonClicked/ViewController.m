@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "NSDictionary+DeleteNull.h"
 #import "PersonModel.h"
+#import "CoreAnimationViewController.h"
 
 @interface ViewController ()
 
@@ -19,6 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    self.view.backgroundColor = [UIColor whiteColor];
+    
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(100, 100, 100, 100);
     btn.backgroundColor = [UIColor blueColor];
@@ -26,6 +29,72 @@
     btn.cs_acceptEventInterval = 1.5;
     
     [btn addTarget:self action:@selector(btnclicked) forControlEvents:UIControlEventTouchUpInside];
+    
+    NSArray* arrStr = @[@"english",@"franch",@"chinese"];
+    NSArray* arrCapStr = [arrStr valueForKey:@"capitalizedString"];
+    for (NSString* str  in arrCapStr) {
+        NSLog(@"%@",str);
+    }
+    
+    NSArray* arrCapStrLength = [arrStr valueForKeyPath:@"capitalizedString.length"];
+    for (NSNumber* length  in arrCapStrLength) {
+        NSLog(@"%ld",(long)length.integerValue);
+    }
+    
+    UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 200, 320, 20)];
+    pageControl.backgroundColor = [UIColor redColor];
+    pageControl.numberOfPages = 5;
+    //设置值
+    [pageControl setValue:[UIImage imageNamed:@"hm_refresh1"] forKeyPath:@"_currentPageImage"];
+    [pageControl setValue:[UIImage imageNamed:@"hm_refresh1"] forKeyPath:@"_pageImage"];
+    //读取值
+    UIImage *currentImage = [pageControl valueForKey:@"_currentPageImage"];
+    
+    UIImage *pageImage = [pageControl valueForKey:@"_pageImage"];
+    
+    [self.view addSubview:pageControl];
+    
+//    UITextView *txt = [[UITextView alloc] initWithFrame:CGRectMake(0, 230, 320, 100)];
+//    txt.font = [UIFont systemFontOfSize:15];
+//    txt.textColor = [UIColor blueColor];
+//    txt.backgroundColor = [UIColor greenColor];
+//    
+//    // _placeholderLabel
+//    UILabel *placeHolderLabel = [[UILabel alloc] init];
+//    placeHolderLabel.text = @"请输入内容";
+//    placeHolderLabel.numberOfLines = 0;
+//    placeHolderLabel.textColor = [UIColor lightGrayColor];
+//    [placeHolderLabel sizeToFit];
+//    [txt addSubview:placeHolderLabel];
+//    
+//    [txt setValue:placeHolderLabel forKeyPath:@"_placeholderLabel"];
+//    [self.view addSubview:txt];
+    
+    
+//    _placeholderLabel
+    
+    add = [Address new];
+    
+    [add addObserver:self forKeyPath:@"city" options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld context:nil];
+    add.country = @"China";
+    add.province = @"Guang Dong";
+    add.district = @"Nan Shan";
+    NSArray* arr = @[@"country",@"province",@"city",@"district"];
+    NSDictionary* dict1 = [add dictionaryWithValuesForKeys:arr]; //把对应key所有的属性全部取出来
+    NSLog(@"%@",dict1);
+    add.city = @"Shen Zhen";
+    add.city = @"Shen Zhen1";
+    add.city = @"Shen Zhen2";
+    add.city = @"Shen Zhen3";
+    add.city = @"Shen Zhen4";
+    add.city = @"Shen Zhen5";
+    add.city = @"Shen Zhen6";
+
+    
+    
+    NSDictionary* modifyDict = @{@"country":@"USA",@"province":@"california",@"city":@"Los angle"};
+    [add setValuesForKeysWithDictionary:modifyDict];
+    NSLog(@"country:%@  province:%@ city:%@",add.country,add.province,add.city);
     
 //    [self testOperation];
     
@@ -40,27 +109,90 @@
     */
     
     
-//    NSOperationQueue * queue = [[NSOperationQueue alloc]init];
+//    NSOperationQueue * queue = [[NSOperationQueue alloc] init];
+//    [queue addOperationWithBlock:^{
+//       
+//    }];
+    
 //    [queue addOperationWithBlock:^{
 //        //这里是你想做的操作
 //    }];
     
 //    [self testOperationQueue];
     
-    NSDictionary *dict = @{@"name":@"xuedan",@"sex":@"男",@"age":@"22"};
-    NSLog(@"dict:%@",dict);
-    
-    NSDictionary *newDict = [NSDictionary changeType:dict];
-    
-    
-    PersonModel *model = [PersonModel new];
-    
-    [model setValuesForKeysWithDictionary:newDict];
-    NSLog(@"newDict:%@",newDict);
-
-    
-    NSLog(@"%@\n%@\n",model.name,model.sex);
+//    NSDictionary *dict = @{@"name":@"xuedan",@"sex":@"男",@"age":@"22"};
+//    NSLog(@"dict:%@",dict);
+//    
+//    NSDictionary *newDict = [NSDictionary changeType:dict];
+//    
+//    
+//    PersonModel *model = [PersonModel new];
+//    
+//    [model setValuesForKeysWithDictionary:newDict];
+//    NSLog(@"newDict:%@",newDict);
+//
+//    
+//    NSLog(@"%@\n%@\n",model.name,model.sex);
 //     NSLog(@"model.other=%@",model.other);
+    
+//    CAGradientLayer *layer = [CAGradientLayer layer];
+//    layer.colors = @[(id)[UIColor redColor].CGColor,(id)[UIColor blueColor].CGColor,(id)[UIColor greenColor].CGColor];
+//    layer.locations = @[@0.1,@0.7,@1];
+//    layer.bounds = CGRectMake(0, 64, 100, 100);
+//    layer.position = CGPointMake(100, 100);
+//    layer.startPoint = CGPointMake(0, 0);
+//    layer.endPoint = CGPointMake(1, 1);
+//    [self.view.layer addSublayer:layer];
+    
+//    CAReplicatorLayer *reLayer = [CAReplicatorLayer layer];
+//    reLayer.position = CGPointMake(0, 0);
+//    CALayer *layer = [CALayer layer];
+//    [reLayer addSublayer:layer];
+//    [self.view.layer addSublayer:reLayer];
+//    layer.bounds = CGRectMake(0, 0, 20, 20);
+//    layer.position = CGPointMake(30, 364);
+//    layer.backgroundColor = [UIColor redColor].CGColor;
+//    reLayer.instanceTransform = CATransform3DMakeTranslation(25, 0, 0);
+//    reLayer.instanceDelay = 1;
+//    reLayer.instanceCount = 5;
+    
+    CAShapeLayer *layer = [CAShapeLayer layer];
+    layer.position = CGPointMake(0, 0);
+    CGMutablePathRef path = CGPathCreateMutable();
+    CGPathMoveToPoint(path, 0, 100, 100);
+    CGPathAddLineToPoint(path, 0, 300, 100);
+    CGPathAddLineToPoint(path, 0, 200, 200);
+    CGPathAddLineToPoint(path, 0, 100, 100);
+    layer.path = path;
+    layer.fillColor = [UIColor redColor].CGColor;
+    layer.fillRule = kCAFillRuleEvenOdd;
+    layer.strokeColor = [UIColor blueColor].CGColor;
+    layer.strokeStart = 0;
+    layer.strokeEnd = 0.5;
+    layer.lineWidth = 5;
+    layer.miterLimit = 1;
+    layer.lineJoin = kCALineJoinMiter;
+    [self.view.layer addSublayer:layer];
+    
+//    //绕z轴旋转的动画
+//    CABasicAnimation * ani = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+//    //从0度开始
+//    ani.fromValue = @0;
+//    //旋转到180度
+//    ani.toValue = [NSNumber numberWithFloat:M_PI];
+//    //时间2S
+//    ani.duration = 2;
+//    //设置为z轴旋转
+////    ani.valueFunction = [CAValueFunction functionWithName:kCAValueFunctionRotateZ];
+//    //执行动画
+//    [layer addAnimation:ani forKey:@""];
+    
+    
+    CAKeyframeAnimation * ani = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    ani.values = @[[NSValue valueWithCGPoint:CGPointMake(100, 100)],[NSValue valueWithCGPoint:CGPointMake(120, 100)],[NSValue valueWithCGPoint:CGPointMake(120, 200)],[NSValue valueWithCGPoint:CGPointMake(200, 200)]];
+    ani.duration = 3;
+    [layer addAnimation:ani forKey:@""];
+    
     
 }
 #pragma mark -- testOperationQueue
@@ -91,6 +223,10 @@
 - (void)btnclicked{
     yyy ++;
     NSLog(@"%d %@",yyy,[NSDate date]);
+    
+    CoreAnimationViewController *vcCoreAnimation  = [CoreAnimationViewController new];
+    vcCoreAnimation.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vcCoreAnimation  animated:YES];
 }
 
 - (void)testOperation{
@@ -139,6 +275,16 @@
     
     NSOperationQueue * queue = [[NSOperationQueue alloc]init];
     [queue addOperation:blockOperation];
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
+    
+    NSString *city = [object valueForKeyPath:keyPath];
+    NSLog(@"city:%@",city);
+}
+
+- (void)dealloc{
+    [add removeObserver:self forKeyPath:@"city"];
 }
 
 
