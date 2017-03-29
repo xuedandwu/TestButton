@@ -22,6 +22,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     self.view.backgroundColor = [UIColor whiteColor];
     
+    
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(100, 100, 100, 100);
     btn.backgroundColor = [UIColor blueColor];
@@ -277,6 +278,88 @@
     [queue addOperation:blockOperation];
 }
 
+#pragma mark - NSFileManager
+//获取沙盒根路径
+- (void)dirHome{
+    NSString * dirHome = NSHomeDirectory();
+}
+
+//获取Document目录路径
+- (NSString *)dirDoc{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    return documentsDirectory;
+}
+
+//获取Document目录路径
+- (NSString *)dicLib{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
+    NSString *libDirectory = [paths objectAtIndex:0];
+    return libDirectory;
+}
+
+//获取Cache目录路径
+- (NSString *)dicCache{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES);
+    NSString *cacheDirectory = [paths objectAtIndex:0];
+    return cacheDirectory;
+}
+
+//获取Temp目录路径
+- (NSString *)dicTemp{
+    NSString *tempDirectory = NSTemporaryDirectory();
+    return tempDirectory;
+}
+//创建文件夹
+- (void)createDir{
+    NSString *documentPath = [self dirDoc];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *testDirectory = [documentPath stringByAppendingPathComponent:@"test"];
+    
+    BOOL res = [fileManager createDirectoryAtPath:testDirectory withIntermediateDirectories:YES attributes:nil error:nil];
+    if (res) {
+        NSLog(@"文件夹创建成功");
+    }else
+        NSLog(@"文件夹创建失败");
+}
+
+//创建文件
+- (void)createFile{
+    NSString *documentPath = [self dirDoc];
+    NSString *testDirectory = [documentPath stringByAppendingPathComponent:@"test"];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *testPath = [documentPath stringByAppendingPathComponent:@"test.txt"];
+    
+    BOOL res = [fileManager createFileAtPath:testPath contents:nil attributes:nil];
+    if (res) {
+        NSLog(@"文件创建成功");
+    }else
+        NSLog(@"文件创建失败");
+}
+
+//写入
+- (void)writeFile{
+    NSString *documentPath = [self dirDoc];
+    NSString *testDirectory = [documentPath stringByAppendingPathComponent:@"test"];
+    NSString *testPath = [testDirectory stringByAppendingPathComponent:@"test.txt"];
+    NSString *content = @"测试写入内容";
+    BOOL res = [content writeToFile:testPath atomically:YES encoding:NSUTF8StringEncoding error:nil];
+    if (res) {
+        NSLog(@"文件写入成功");
+    }else
+        NSLog(@"文件写入失败");
+}
+
+//读取
+- (void)readFile{
+    NSString *documentPath = [self dirDoc];
+    NSString *testDirectory = [documentPath stringByAppendingPathComponent:@"test"];
+    NSString *testPath = [testDirectory stringByAppendingPathComponent:@"test.txt"];
+    
+    NSString *content = [NSString stringWithContentsOfFile:testPath encoding:NSUTF8StringEncoding error:nil];
+}
+
+#pragma mark - KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
     
     NSString *city = [object valueForKeyPath:keyPath];

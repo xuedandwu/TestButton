@@ -8,6 +8,9 @@
 
 #import "CoreAnimationViewController.h"
 #import <objc/runtime.h>
+#import "UINavigationBar+Awesome.h"
+
+#define NAVBAR_CHANGE_POINT 50
 
 @interface CoreAnimationViewController ()
 
@@ -17,14 +20,30 @@
 
 #define DEGREES_TO_RADIANS(x) (3.14159265358979323846 * x / 180.0)
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    UIColor * color = [UIColor colorWithRed:0/255.0 green:175/255.0 blue:240/255.0 alpha:1];
+    CGFloat offsetY = scrollView.contentOffset.y;
+    if (offsetY > NAVBAR_CHANGE_POINT) {
+        CGFloat alpha = MIN(1, 1 - ((NAVBAR_CHANGE_POINT + 64 - offsetY) / 64));
+        [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:alpha]];
+    } else {
+        [self.navigationController.navigationBar lt_setBackgroundColor:[color colorWithAlphaComponent:0]];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     
-    imgv = [[UIImageView alloc] initWithFrame:CGRectMake(0, 64, 100, 200)];
-    imgv.backgroundColor = [UIColor blueColor];
-    [self.view addSubview:imgv];
+    
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 190)];
+    
+    imgv = [[UIImageView alloc] initWithFrame:CGRectMake(0, -64, self.view.frame.size.width, 254)];
+//    imgv.backgroundColor = [UIColor blueColor];
+    imgv.image = [UIImage imageNamed:@"bg.jpg"];
+    [headerView addSubview:imgv];
     
     UIPageControl *pageControl = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 200, 320, 20)];
     pageControl.backgroundColor = [UIColor redColor];
@@ -44,16 +63,18 @@
 //    [self getInstanceMethodList];
 //    [self getClassMethodList];
     
-    [self logAnyThing];
+//    [self logAnyThing];
 
-    
+    [self.navigationController.navigationBar lt_setBackgroundColor:[UIColor clearColor]];
     [self addObserver:self forKeyPath:@"view.frame" options:NSKeyValueObservingOptionNew context:nil];
     
-//    tbList = [UITableView new];
-//    tbList.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height);
-//    tbList.delegate = self;
-//    tbList.dataSource = self;
-//    [self.view addSubview:tbList];
+    tbList = [UITableView new];
+    tbList.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    tbList.delegate = self;
+    tbList.dataSource = self;
+    [self.view addSubview:tbList];
+    
+    tbList.tableHeaderView = headerView;
     
 //    dispatch_queue_t queue = dispatch_queue_create("com.demo.serialQueue", DISPATCH_QUEUE_SERIAL);
 //    NSLog(@"1"); // 任务1
@@ -293,7 +314,7 @@
 
 #pragma mark - tableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 5;
+    return 15;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
