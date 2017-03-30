@@ -10,6 +10,10 @@
 #import "NSDictionary+DeleteNull.h"
 #import "PersonModel.h"
 #import "CoreAnimationViewController.h"
+#import <objc/runtime.h>
+#import "NSMutableArray+Extension.h"
+
+static char associatedObjectKey;
 
 @interface ViewController ()
 
@@ -23,6 +27,10 @@
     self.view.backgroundColor = [UIColor whiteColor];
     
     
+    NSMutableArray *aryMu = [NSMutableArray new];
+    [aryMu addObject:@"123"];
+    [aryMu addObject:nil];
+
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(100, 100, 100, 100);
     btn.backgroundColor = [UIColor blueColor];
@@ -194,8 +202,17 @@
     ani.duration = 3;
     [layer addAnimation:ani forKey:@""];
     
+    NSString * str = @"123";
+    
+    objc_setAssociatedObject(str, &associatedObjectKey, @"添加的字符串属性", OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    
+    NSString *string = objc_getAssociatedObject(str, &associatedObjectKey);
+    
+    NSLog(@"AssociatedObjectKeyNew = %@",string);
+    NSLog(@"AssociatedObjectKeyOld = %@",str);
     
 }
+
 #pragma mark -- testOperationQueue
 - (void)testOperationQueue{
     NSInvocationOperation * op1 = [[NSInvocationOperation alloc]initWithTarget:self selector:@selector(testNSInvocationOperation1) object:nil];
@@ -358,6 +375,43 @@
     
     NSString *content = [NSString stringWithContentsOfFile:testPath encoding:NSUTF8StringEncoding error:nil];
 }
+
+#pragma mark - 注意：归档解档需要遵守<NSCoding>协议，实现以下两个方法
+//- (void)encodeWithCoder:(NSCoder *)encoder{
+//    unsigned int count = 0;
+//    
+//    objc_property_t *properties = class_copyPropertyList([Address class], &count);
+//    
+//    for (int i=0; i < count; i ++) {
+//        
+//        objc_property_t property = properties[i];
+//        
+//        const char *name = property_getName(property);
+//        
+//        NSString *key = [NSString stringWithUTF8String:name];
+//        
+//        [encoder encodeObject:[self valueForKeyPath:key] forKey:key];
+//        
+//    }
+//    
+//}
+//
+//- (instancetype)initWithCoder:(NSCoder *)decoder{
+//    
+//    //归档存储自定义对象
+//    unsigned int count = 0;
+//    //获得指向该类所有属性的指针
+//    objc_property_t *properties = class_copyPropertyList([Address class], &count);
+//    for (int i =0; i < count; i ++) {
+//        objc_property_t property = properties[i];        //根据objc_property_t获得其属性的名称--->C语言的字符串
+//        const char *name = property_getName(property);
+//        NSString *key = [NSString stringWithUTF8String:name];        //解码每个属性,利用kVC取出每个属性对应的数值
+//        [self setValue:[decoder decodeObjectForKey:key] forKeyPath:key];
+//    }
+//    return self;
+//    
+//}
+
 
 #pragma mark - KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
