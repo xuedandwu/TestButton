@@ -10,6 +10,7 @@
 		1EA5A0581E8BA31000923935 /* bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1EA5A0571E8BA31000923935 /* bg.jpg */; };
 		1EA5A05B1E8BA36600923935 /* UINavigationBar+Awesome.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA5A05A1E8BA36600923935 /* UINavigationBar+Awesome.m */; };
 		1EA5A05E1E8CD32F00923935 /* NSMutableArray+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA5A05D1E8CD32F00923935 /* NSMutableArray+Extension.m */; };
+		1EA5A0611E8D084400923935 /* NSMutableDictionary+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EA5A0601E8D084400923935 /* NSMutableDictionary+Extension.m */; };
 		1ECE52191E744B0800F9E17C /* hm_refresh1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1ECE52181E744B0800F9E17C /* hm_refresh1@2x.png */; };
 		1ECE521C1E744F1400F9E17C /* Address.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ECE521B1E744F1400F9E17C /* Address.m */; };
 		1ED9EFA11E69ABCA002E4693 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1ED9EFA01E69ABCA002E4693 /* main.m */; };
@@ -81,6 +82,8 @@
 		1EA5A05A1E8BA36600923935 /* UINavigationBar+Awesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+Awesome.m"; sourceTree = "<group>"; };
 		1EA5A05C1E8CD32F00923935 /* NSMutableArray+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Extension.h"; sourceTree = "<group>"; };
 		1EA5A05D1E8CD32F00923935 /* NSMutableArray+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Extension.m"; sourceTree = "<group>"; };
+		1EA5A05F1E8D084400923935 /* NSMutableDictionary+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableDictionary+Extension.h"; sourceTree = "<group>"; };
+		1EA5A0601E8D084400923935 /* NSMutableDictionary+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableDictionary+Extension.m"; sourceTree = "<group>"; };
 		1ECE52181E744B0800F9E17C /* hm_refresh1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hm_refresh1@2x.png"; sourceTree = "<group>"; };
 		1ECE521A1E744F1400F9E17C /* Address.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Address.h; sourceTree = "<group>"; };
 		1ECE521B1E744F1400F9E17C /* Address.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Address.m; sourceTree = "<group>"; };
@@ -180,6 +183,8 @@
 				1ED9EFBA1E69ABE6002E4693 /* UIControl+CS_FixMultiClick.m */,
 				1EA5A05C1E8CD32F00923935 /* NSMutableArray+Extension.h */,
 				1EA5A05D1E8CD32F00923935 /* NSMutableArray+Extension.m */,
+				1EA5A05F1E8D084400923935 /* NSMutableDictionary+Extension.h */,
+				1EA5A0601E8D084400923935 /* NSMutableDictionary+Extension.m */,
 				1ED9EFA81E69ABCA002E4693 /* Main.storyboard */,
 				1ED9EFAE1E69ABCA002E4693 /* Assets.xcassets */,
 				1ED9EFB01E69ABCA002E4693 /* LaunchScreen.storyboard */,
@@ -371,6 +376,7 @@
 				1ECE521C1E744F1400F9E17C /* Address.m in Sources */,
 				1ED9EFCB1E6D1ADA002E4693 /* CoreAnimationViewController.m in Sources */,
 				1ED9EFBB1E69ABE6002E4693 /* UIControl+CS_FixMultiClick.m in Sources */,
+				1EA5A0611E8D084400923935 /* NSMutableDictionary+Extension.m in Sources */,
 				1ED9EFA71E69ABCA002E4693 /* ViewController.m in Sources */,
 				1EA5A05E1E8CD32F00923935 /* NSMutableArray+Extension.m in Sources */,
 				1ED9EFAD1E69ABCA002E4693 /* TestButtonClicked.xcdatamodeld in Sources */,

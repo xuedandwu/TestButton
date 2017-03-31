@@ -12,6 +12,8 @@
 #import "CoreAnimationViewController.h"
 #import <objc/runtime.h>
 #import "NSMutableArray+Extension.h"
+#import "NSMutableDictionary+Extension.h"
+#import <AVFoundation/AVFoundation.h>
 
 static char associatedObjectKey;
 
@@ -25,11 +27,17 @@ static char associatedObjectKey;
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.view.backgroundColor = [UIColor whiteColor];
+
     
     
     NSMutableArray *aryMu = [NSMutableArray new];
     [aryMu addObject:@"123"];
     [aryMu addObject:nil];
+    
+    
+    NSMutableDictionary *dicMu = [NSMutableDictionary dictionary];
+    [dicMu setObject:@"123" forKey:@"a"];
+    [dicMu setObject:nil forKey:@"b"];
 
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(100, 100, 100, 100);
@@ -210,6 +218,28 @@ static char associatedObjectKey;
     
     NSLog(@"AssociatedObjectKeyNew = %@",string);
     NSLog(@"AssociatedObjectKeyOld = %@",str);
+    
+    
+    UIImageView *imgv = [[UIImageView alloc] initWithFrame:CGRectMake(0, 200, 100, 100)];
+    imgv.center = self.view.center;
+    imgv.backgroundColor = [UIColor greenColor];
+    
+    /*
+    UIGraphicsBeginImageContextWithOptions(imgv.bounds.size, NO, 1);
+    [[UIBezierPath bezierPathWithRoundedRect:imgv.bounds cornerRadius:10] addClip];
+    [imgv drawRect:imgv.bounds];
+    
+    imgv.image = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    */
+    
+    
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:imgv.bounds cornerRadius:10];
+    CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+    maskLayer.frame = imgv.bounds;
+    maskLayer.path = maskPath.CGPath;
+    imgv.layer.mask = maskLayer;
+    [self.view addSubview:imgv];
     
 }
 
